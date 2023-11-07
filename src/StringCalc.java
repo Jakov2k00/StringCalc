@@ -1,4 +1,9 @@
 
+/*
+    StringCalc for Kata.Academy
+    Author: Jakov2k00
+ */
+
 import java.io.IOException;
 import java.util.Scanner;
 import static java.lang.Integer.*;
@@ -13,8 +18,8 @@ public class StringCalc {
         Scanner scanner = new Scanner(System.in);
         Printer printer = new Printer();
 
-        System.out.println("Это - строковый калькулятор. Допустимый формат выражений: \"a\" + \"b\", \"a\" - \"b\", \"a\" * b, \"a\" / b.");
-        System.out.println("Введи выражение в поле ниже:");
+        System.out.println("Р­С‚Рѕ - СЃС‚СЂРѕРєРѕРІС‹Р№ РєР°Р»СЊРєСѓР»СЏС‚РѕСЂ. Р”РѕРїСѓСЃС‚РёРјС‹Р№ С„РѕСЂРјР°С‚ РІС‹СЂР°Р¶РµРЅРёР№: \"a\" + \"b\", \"a\" - \"b\", \"a\" * b, \"a\" / b.");
+        System.out.println("Р’РІРµРґРё РІС‹СЂР°Р¶РµРЅРёРµ РІ РїРѕР»Рµ РЅРёР¶Рµ:");
 
         input = scanner.nextLine();
         input = input.replace(" ", "");
@@ -35,16 +40,16 @@ public class StringCalc {
         } else if (input.contains("/")) {
             str = input.split("/");
             oper = '/';
-        } else throw new IOException("Неверный знак операции!");
+        } else throw new IOException("РќРµРІРµСЂРЅС‹Р№ Р·РЅР°Рє РѕРїРµСЂР°С†РёРё!");
 
 
         if (str[0].matches("[0-9]")) {
-            throw new NumberFormatException("Неверный формат вводимых данных!");
+            throw new NumberFormatException("РќРµРІРµСЂРЅС‹Р№ С„РѕСЂРјР°С‚ РІРІРѕРґРёРјС‹С… РґР°РЅРЅС‹С…!");
         }
 
 
         if (oper == '*' || oper == '/') {
-            if (str[1].contains("\"")) throw new IOException("Неверный формат выражения!");
+            if (str[1].contains("\"")) throw new IOException("РќРµРІРµСЂРЅС‹Р№ С„РѕСЂРјР°С‚ РІС‹СЂР°Р¶РµРЅРёСЏ!");
         }
 
         for (int i = 0; i < str.length; i++) {
@@ -52,7 +57,7 @@ public class StringCalc {
         }
 
         if ((str[0].length() > 10) || (str[1].length() > 10)) {
-            throw new IOException("Длина введенной строки не может превышать 10 символов!");
+            throw new IOException("Р”Р»РёРЅР° РІРІРµРґРµРЅРЅРѕР№ СЃС‚СЂРѕРєРё РЅРµ РјРѕР¶РµС‚ РїСЂРµРІС‹С€Р°С‚СЊ 10 СЃРёРјРІРѕР»РѕРІ!");
         }
 
         switch(oper) {
@@ -62,7 +67,7 @@ public class StringCalc {
             case '*': {
                 int num = parseInt(str[1]);
                 if (num < 1 || num > 10) {
-                    throw new IOException("Допустимо использовать числа от 1 до 10!");
+                    throw new IOException("Р”РѕРїСѓСЃС‚РёРјРѕ РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ С‡РёСЃР»Р° РѕС‚ 1 РґРѕ 10!");
                 }
                 int multi = parseInt(str[1]);
                 String result = "";
@@ -84,7 +89,7 @@ public class StringCalc {
             default: {
                 int num = parseInt(str[1]);
                 if (num < 1 || num > 10) {
-                    throw new IOException("Допустимо использовать числа от 1 до 10!");
+                    throw new IOException("Р”РѕРїСѓСЃС‚РёРјРѕ РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ С‡РёСЃР»Р° РѕС‚ 1 РґРѕ 10!");
                 }
                 int div = str[0].length() / parseInt(str[1]);
                 String divStr = str[0].substring(0, div);
